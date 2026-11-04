@@ -34,7 +34,9 @@ function eventDate(item){
  const locale=({es:"es-ES",en:"en-GB",fr:"fr-FR",pt:"pt-PT",de:"de-DE"})[ROOT.lang]||"es-ES";
  const date=new Intl.DateTimeFormat(locale,{day:"numeric",month:"long",year:"numeric",timeZone:"Europe/Madrid"}).format(start);
  const time=new Intl.DateTimeFormat(locale,{hour:"2-digit",minute:"2-digit",hourCycle:"h23",timeZone:"Europe/Madrid"}).format(start);
- return '<p class="event-date"><strong>'+esc(date)+'</strong> · '+esc(time)+'</p>';
+ const venue=item.venue?'<p class="event-venue">📍 '+esc(item.venue)+'</p>':"";
+ const showTime=item.timeConfirmed===true;
+ return '<div class="guest-event-meta"><p class="guest-event-date">📅 '+esc(date)+'</p>'+(showTime?'<p class="guest-event-time">🕒 '+esc(time)+'</p>':"")+venue+'</div>';
 }
 function render(section,items){
  const host=document.getElementById(section);
