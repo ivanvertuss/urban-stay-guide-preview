@@ -27,13 +27,22 @@ function setStatus(section,key){
  if(!node){node=document.createElement("p");node.setAttribute("data-live-status","");host.append(node)}
  node.textContent=msg(key);
 }
+function eventDate(item){
+ if(!item.startsAt)return "";
+ const start=new Date(item.startsAt);
+ if(Number.isNaN(start.getTime()))return "";
+ const locale=({es:"es-ES",en:"en-GB",fr:"fr-FR",pt:"pt-PT",de:"de-DE"})[ROOT.lang]||"es-ES";
+ const date=new Intl.DateTimeFormat(locale,{day:"numeric",month:"long",year:"numeric",timeZone:"Europe/Madrid"}).format(start);
+ const time=new Intl.DateTimeFormat(locale,{hour:"2-digit",minute:"2-digit",hourCycle:"h23",timeZone:"Europe/Madrid"}).format(start);
+ return '<p class="event-date"><strong>'+esc(date)+'</strong> · '+esc(time)+'</p>';
+}
 function render(section,items){
  const host=document.getElementById(section);
  if(!host)return;
  const container=host.querySelector("[data-public-items]")||document.createElement("div");
  container.setAttribute("data-public-items","");
  container.className="preview-grid";
- container.innerHTML=items.map(item=>'<article class="guide-panel"><h3>'+esc(item.title)+'</h3><p>'+esc(item.description||"")+'</p>'+(item.url&&/^https:\/\//i.test(item.url)?'<a href="'+esc(item.url)+'" target="_blank" rel="noopener noreferrer" data-more-link>'+esc(msg("more"))+'</a>':"")+'</article>').join("");
+ container.innerHTML=items.map(item=>'<article class="guide-panel"><h3>'+esc(item.title)+'</h3>'+(section==="eventos"?eventDate(item):"")+'<p>'+esc(item.description||"")+'</p>'+(item.url&&/^https:\/\//i.test(item.url)?'<a href="'+esc(item.url)+'" target="_blank" rel="noopener noreferrer" data-more-link>'+esc(msg("more"))+'</a>':"")+'</article>').join("");
  host.append(container);
 }
 async function load(){
