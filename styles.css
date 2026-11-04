@@ -147,3 +147,9 @@ footer small{display:block;color:#9fb3c0;margin-top:6px}
 
 /* Selector de idiomas · versión final multilingüe */
 .topbar__actions{display:flex;align-items:center;gap:4px}.language-picker{position:relative}.language-toggle{height:40px;display:flex;align-items:center;gap:7px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--blue);font-weight:800;cursor:pointer}.language-menu{position:absolute;z-index:90;right:0;top:48px;min-width:180px;padding:8px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 18px 50px rgba(8,47,79,.18);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.2s}.language-menu.is-open{opacity:1;visibility:visible;transform:none}.language-menu button{width:100%;display:flex;align-items:center;gap:9px;padding:11px 12px;border:0;border-radius:12px;background:transparent;color:var(--ink);font:700 .92rem Inter,sans-serif;text-align:left;cursor:pointer}.language-menu button:hover,.language-menu button.is-active{background:var(--tint);color:var(--blue)}@media(max-width:540px){.language-toggle{padding:0 9px;font-size:.78rem}.topbar{padding:0 10px}.brand img{width:40px;height:40px}}
+
+/* Public guest agenda: readable event metadata */
+#eventos [data-public-items] .guest-event-meta{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin:12px 0 15px}
+#eventos [data-public-items] .guest-event-meta p{display:block;width:auto;min-height:0;max-width:100%;margin:0;padding:0;background:transparent;border-radius:0;text-align:left;line-height:1.5;overflow-wrap:break-word}
+#eventos [data-public-items] .guest-event-date{font-weight:800;color:var(--blue)}
+#eventos [data-public-items] .guest-event-time,#eventos [data-public-items] .event-venue{font-size:.9rem;color:var(--muted)}
