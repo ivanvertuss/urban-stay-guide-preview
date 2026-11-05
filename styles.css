@@ -161,3 +161,10 @@ footer small{display:block;color:#9fb3c0;margin-top:6px}
 #eventos [data-public-items] .guide-panel a[data-more-link]{margin-top:auto;padding-top:12px;align-self:flex-start}
 #eventos [data-public-items] .guest-event-image{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:12px;margin:0 0 15px}
 @media(max-width:600px){#eventos [data-public-items]{grid-template-columns:1fr;gap:12px}#eventos [data-public-items] .guide-panel{padding:18px}#eventos [data-public-items] .guest-event-meta{gap:5px}}
+
+/* Approved guest collaborators and promotions, mobile-first */
+#colaboradores [data-public-items],#promociones [data-public-items]{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+#colaboradores [data-public-items] .guide-panel,#promociones [data-public-items] .guide-panel{min-width:0;display:flex;flex-direction:column;overflow-wrap:anywhere;padding:20px}
+#colaboradores [data-public-items] .guide-panel h3,#promociones [data-public-items] .guide-panel h3{line-height:1.3;margin:0 0 12px}
+#colaboradores [data-public-items] .guide-panel a[data-more-link],#promociones [data-public-items] .guide-panel a[data-more-link]{margin-top:auto;padding-top:12px;align-self:flex-start}
+@media(max-width:600px){#colaboradores [data-public-items],#promociones [data-public-items]{grid-template-columns:1fr;gap:12px}#colaboradores [data-public-items] .guide-panel,#promociones [data-public-items] .guide-panel{padding:18px}}
